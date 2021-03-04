@@ -4,7 +4,7 @@ services:
 
 before_install:
   - docker build -t nkavuri/springauth-ui -f ./ui/Dockerfile.dev ./ui
-  - docker build -t nkavuri/springauth-api -f ./ui/Dockerfile.dev ./api
+  - docker build -t nkavuri/springauth-api -f ./api/Dockerfile.dev ./api
 
 script:
   - docker run -e CI=true nkavuri/springauth-ui npm test -- --coverage
