@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres_user
+      - POSTGRES_PASSWORD=postgres_password
+    volumes:
+      - ./demodb.sql:/docker-entrypoint-initdb.d/demodb.sql
+  nginx:
+    depends_on:
+      - ui
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '3050:80'
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./api
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/demodb
+      - SPRING_DATASOURCE_USERNAME=postgres_user
+      - SPRING_DATASOURCE_PASSWORD=postgres_password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  ui:
+    stdin_open: true
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./ui
+#    volumes:
+#      - /app/node_modules
+#      - ./ui:/app
