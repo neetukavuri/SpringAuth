@@ -1,0 +1,32 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "ui",
+            "image": "nkavuri/springauth-ui",
+            "hostname": "ui",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "api",
+            "image": "nkavuri/springauth-api",
+            "hostname": "api",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "nginx",
+            "image": "nkavuri/multi-nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["ui", "api"],
+            "memory": 128
+        }
+    ]
+}

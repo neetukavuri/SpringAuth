@@ -24,14 +24,14 @@ after_success:
   - docker push nkavuri/springauth-api
 
   
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-east-2"
-#   app: "multi-docker2"
-#   env: "Multidocker2-env"
-#   bucket_name: "elasticbeanstalk-us-east-2-235502769638"
-#   bucket_path: "docker-multi"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "spring-auth"
+  env: "Springauth-env"
+  bucket_name: "elasticbeanstalk-us-east-2-235502769638"
+  bucket_path: "spring-auth"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
