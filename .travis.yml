@@ -19,9 +19,9 @@ after_success:
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # # Take those images and push them to docker hub
-  # - docker push nkavuri/springauth-ui
-  # - docker push nkavuri/springauth-nginx
-  # - docker push nkavuri/springauth-api
+  - docker push nkavuri/springauth-ui
+  - docker push nkavuri/springauth-nginx
+  - docker push nkavuri/springauth-api
 
   
 # deploy:
