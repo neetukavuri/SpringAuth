@@ -9,13 +9,6 @@
             "memory": 128
         },
         {
-            "name": "client",
-            "image": "nkavuri/springauth-ui",
-            "hostname": "client",
-            "essential": false,
-            "memory": 128
-        },
-        {
             "name": "api",
             "image": "nkavuri/springauth-api",
             "hostname": "api",
@@ -32,7 +25,7 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["ui", "client", "api"],
+            "links": ["ui", "api"],
             "memory": 128
         }
     ]
