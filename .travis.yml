@@ -8,7 +8,7 @@ before_install:
 
 script:
   - docker run -e CI=true nkavuri/springauth-ui npm test -- --coverage
-  - docker run -e CI=true nkavuri/springauth-api mvn test
+  #- docker run -e CI=true nkavuri/springauth-api mvn test
 
 after_success:
   - docker build -t nkavuri/springauth-ui ./ui
