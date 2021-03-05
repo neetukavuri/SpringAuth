@@ -17,7 +17,7 @@
         },
         {
             "name": "nginx",
-            "image": "nkavuri/multi-nginx",
+            "image": "nkavuri/springauth-nginx",
             "essential": true,
             "portMappings": [
                 {
