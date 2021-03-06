@@ -4,8 +4,9 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,8 @@ public class UserService {
 	// Port via annotation
 	//@Value('${server.port}')
 	//int aPort;
-	
+    Logger logger = LoggerFactory.getLogger(UserService.class);
+
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -40,11 +42,11 @@ public class UserService {
 	
 	@Scheduled(fixedDelay = 60000)
 	public void getUsers() {
-		System.out.println("finding users");
+		logger.error("finding users");
 		List<User> users = userRepository.findAll();
-		System.out.println("Found users " + users);
+		logger.error("Found users " + users);
 		try {
-			System.out.println("HostAndPort :" + getHostAndPort());
+			logger.error("HostAndPort :"  + getHostAndPort());
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
