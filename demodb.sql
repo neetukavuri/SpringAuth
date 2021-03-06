@@ -236,7 +236,7 @@ ALTER TABLE ONLY public.user_roles
 ALTER TABLE ONLY public.user_roles
     ADD CONSTRAINT fkhfh9dx7w3ubf1co1vdev94g3f FOREIGN KEY (user_id) REFERENCES public.users(id);
 
-
+COMMIT;
 --
 -- PostgreSQL database dump complete
 --
