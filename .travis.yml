@@ -27,10 +27,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "SpringAuth"
-  env: "Springauth-env"
+  app: "SpringAuth2"
+  env: "Springauth2-env"
   bucket_name: "spring-auth-bucket"
-  bucket_path: "spring-auth"
+  bucket_path: "spring-auth2"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
