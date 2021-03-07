@@ -27,7 +27,7 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "SpringAuth2"
+  app: "spring-auth2"
   env: "Springauth2-env"
   bucket_name: "spring-auth-bucket"
   bucket_path: "spring-auth2"
