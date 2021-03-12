@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: springauth-api-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: api
+
+  template:
+    metadata:
+      labels:
+        component: api
+    spec:
+      containers:
+        - name: api
+          image: nkavuri/springauth-api
+          ports:
+              - containerPort: 8080
+          env:
+            - name: SPRING-DATASOURCE-USERNAME
+              value: postgres
+            - name: SPRING-DATASOURCE-URL
+              value: jdbc:postgresql://postgres-cluster-ip-service:5432/demodb
+            - name: SPRING-DATASOURCE-PASSWORD
+              valueFrom: 
+                secretKeyRef:
+                  name: springauthsecrets
+                  key: PGPASSWORD
+            - name: spring.datasource.username
+              value: postgres
+            - name: spring.datasource.url
+              value: jdbc:postgresql://postgres-cluster-ip-service:5432/demodb
+            - name: spring.datasource.password
+              valueFrom: 
+                secretKeyRef:
+                  name: springauthsecrets
+                  key: PGPASSWORD
+

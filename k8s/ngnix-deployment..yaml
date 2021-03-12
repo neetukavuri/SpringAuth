@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: springauth-nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: springauth-nginx
+  template:
+    metadata:
+      labels:
+        component: springauth-nginx
+    spec:
+      containers:
+        - name: springauth-ui
+          image: nkavuri/springauth-nginx
+          ports:
+            - containerPort: 80

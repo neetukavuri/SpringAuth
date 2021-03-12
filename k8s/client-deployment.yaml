@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: springauth-ui-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: ui
+  template:
+    metadata:
+      labels:
+        component: ui
+    spec:
+      containers:
+        - name: ui
+          image: nkavuri/springauth-ui
+          ports:
+            - containerPort: 3000
